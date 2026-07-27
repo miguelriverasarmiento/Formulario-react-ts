@@ -1,19 +1,53 @@
+import { useState } from "react"
 import { RadioInput } from "./radio-input"
 import { TextInput } from "./text-input"
 import { RequiredSign } from "./required-sign"
+import { type FormValues } from "../types/form"
 
 export const Form = () => {
+
+  const [formValues, setFormValues] = useState<FormValues>({
+    firstName: "",
+    secondName: "",
+    email: ""
+  })
+
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    console.log("Form values", formValues)
+  }
+
   return (
-    <form action="" className="bg-white w-150 m-auto p-8 rounded-2x1 flex flex-col gap-4">
+    <form 
+      onSubmit={(event: React.SubmitEvent<HTMLFormElement>) => handleSubmit(event)} 
+      action="" 
+      className="bg-white w-150 m-auto p-8 rounded-2x1 flex flex-col gap-4"
+    >
+      
       <h2 className="text-2x1 font-medium text-Grey-900-darker mb-2">Contact Us</h2>
 
       <div className="flex flex-col md:flex-row gap-4">
-        <TextInput label="First Name" id="first_name" />
-        <TextInput label="Second Name" id="second_name" />
+        <TextInput 
+          label="First Name"
+          id="first_name"
+          updateState={setFormValues}
+          currentState={formValues}
+        />
+        <TextInput 
+          label="Second Name"
+          id="second_name"
+          updateState={setFormValues}
+          currentState={formValues}
+        />
       </div>
 
       <div className="">
-        <TextInput label="Email Address" id="email" />
+        <TextInput
+          label="Email Address"
+          id="email"
+          updateState={setFormValues}
+          currentState={formValues}
+        />
       </div>
 
       <div>
@@ -43,7 +77,7 @@ export const Form = () => {
       <input
         type="submit"
         value="submit"
-        className="bg-Green-600-medium w-full p-2 text-white font-bold rounded-md h-12"
+        className="bg-Green-600-medium w-full p-2 text-white font-bold rounded-md h-12 cursor-pointer hover:bg-Grey-900-darker"
       />
     </form>
   );
