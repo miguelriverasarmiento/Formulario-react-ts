@@ -1,5 +1,5 @@
-import { RequiredSign } from "./required-sign"
-import { type FormValues } from "../types/form"
+import { RequiredSign } from "../required-sign"
+import { type FormValues } from "../../types/form"
 
 interface Props {
   label: string
@@ -30,7 +30,7 @@ export const TextInput = ({ label, id, updateState, currentState }: Props) => {
       </div>
       <input
         id={id}
-        className="border border-Grey-500-medium rounded-sm h-10"
+        className="border border-Grey-500-medium rounded-sm h-10 px-2.5 hover:border-Green-600-medium cursor-pointer focus:border-Green-600-medium focus:outline focus:outline-Green-600-medium"
         type="text"
         name={id}
         onChange={(event) => handleChange(event.target.value)}

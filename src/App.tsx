@@ -1,9 +1,9 @@
-import { Form } from "./components"
+import { Form } from "./components/form"
 
 function App() {
 
   return (
-    <main className="bg-Green-200-lighter h-screen pt-10 flex">
+    <main className="bg-Green-200-lighter p-4 w-full min-h-screen flex">
       <Form />
     </main>
   )
